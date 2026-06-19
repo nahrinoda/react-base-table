@@ -19,10 +19,13 @@ export const FrozenDirection: Record<string, FrozenDirectionValue> = {
 /**
  * Column for BaseTable
  */
-class Column extends React.Component {
-  static Alignment = Alignment;
-  static FrozenDirection = FrozenDirection;
-}
+const Column: React.FC & {
+  Alignment: typeof Alignment;
+  FrozenDirection: typeof FrozenDirection;
+} = () => null;
+
+Column.Alignment = Alignment;
+Column.FrozenDirection = FrozenDirection;
 
 Column.propTypes = {
   /**
