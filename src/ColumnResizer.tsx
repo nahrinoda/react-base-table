@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { noop, addClassName, removeClassName } from './utils';
 
-import type { ColumnShape } from './types';
+import type { ColumnResizerProps } from './types';
 
 const INVALID_VALUE = null;
 
@@ -53,17 +53,6 @@ const eventsFor = {
 };
 
 let dragEventFor = eventsFor.mouse;
-
-export interface ColumnResizerProps {
-  style?: React.CSSProperties;
-  column?: ColumnShape;
-  onResizeStart?: (column: ColumnShape) => void;
-  onResize?: (column: ColumnShape, width: number) => void;
-  onResizeStop?: (column: ColumnShape) => void;
-  minWidth?: number;
-  className?: string;
-  [key: string]: any;
-}
 
 /**
  * ColumnResizer for BaseTable

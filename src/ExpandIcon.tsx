@@ -2,14 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-export interface ExpandIconProps {
-  expandable?: boolean;
-  expanded?: boolean;
-  indentSize?: number;
-  depth?: number;
-  onExpand?: (expanded: boolean) => void;
-  [key: string]: any;
-}
+import type { ExpandIconProps } from './types';
 
 /**
  * default ExpandIcon for BaseTable

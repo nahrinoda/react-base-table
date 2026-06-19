@@ -3,36 +3,7 @@ import PropTypes from 'prop-types';
 
 import { renderElement } from './utils';
 
-import type { ColumnShape, RowData, RowKey, RowEventHandlers } from './types';
-
-export interface TableRowProps {
-  isScrolling?: boolean;
-  className?: string;
-  style?: React.CSSProperties;
-  columns: ColumnShape[];
-  rowData: RowData;
-  rowIndex: number;
-  rowKey?: RowKey;
-  expandColumnKey?: string;
-  depth?: number;
-  rowEventHandlers?: RowEventHandlers;
-  rowRenderer?: React.ComponentType<any> | React.ReactElement | ((props: any) => React.ReactNode);
-  cellRenderer?: (args: any) => React.ReactNode;
-  expandIconRenderer?: (args: any) => React.ReactNode;
-  estimatedRowHeight?: number | ((args: { rowData: RowData; rowIndex: number }) => number);
-  getIsResetting?: () => boolean;
-  onRowHover?: (args: {
-    hovered: boolean;
-    rowData: RowData;
-    rowIndex: number;
-    rowKey: RowKey;
-    event: React.SyntheticEvent;
-  }) => void;
-  onRowExpand?: (args: { expanded: boolean; rowData: RowData; rowIndex: number; rowKey: RowKey }) => void;
-  onRowHeightChange?: (rowKey: RowKey, height: number, rowIndex: number, frozen?: any) => void;
-  tagName?: React.ElementType;
-  [key: string]: any;
-}
+import type { TableRowProps } from './types';
 
 /**
  * Row component for BaseTable

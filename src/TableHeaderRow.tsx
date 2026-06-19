@@ -3,21 +3,7 @@ import PropTypes from 'prop-types';
 
 import { renderElement } from './utils';
 
-import type { ColumnShape } from './types';
-
-export interface TableHeaderRowProps {
-  isScrolling?: boolean;
-  className?: string;
-  style?: React.CSSProperties;
-  columns: ColumnShape[];
-  headerIndex?: number;
-  cellRenderer?: (args: any) => React.ReactNode;
-  headerRenderer?: React.ComponentType<any> | React.ReactElement | ((props: any) => React.ReactNode);
-  expandColumnKey?: string;
-  expandIcon?: React.ComponentType<any>;
-  tagName?: React.ElementType;
-  [key: string]: any;
-}
+import type { TableHeaderRowProps } from './types';
 
 /**
  * HeaderRow component for BaseTable

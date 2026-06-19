@@ -4,14 +4,7 @@ import cn from 'classnames';
 
 import SortOrder from './SortOrder';
 
-import type { SortOrderValue } from './types';
-
-export interface SortIndicatorProps {
-  sortOrder?: SortOrderValue;
-  className?: string;
-  style?: React.CSSProperties;
-  [key: string]: any;
-}
+import type { SortIndicatorProps } from './types';
 
 /**
  * default SortIndicator for BaseTable

@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import type { ColumnShape } from './types';
-
-export interface TableHeaderCellProps {
-  className?: string;
-  column?: ColumnShape;
-  columnIndex?: number;
-}
+import type { TableHeaderCellProps } from './types';
 
 /**
  * HeaderCell component for BaseTable

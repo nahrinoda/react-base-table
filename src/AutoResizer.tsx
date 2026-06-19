@@ -2,13 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-export interface AutoResizerProps {
-  className?: string;
-  width?: number;
-  height?: number;
-  children: (size: { width: number; height: number }) => React.ReactNode;
-  onResize?: (size: { width: number; height: number }) => void;
-}
+import type { AutoResizerProps } from './types';
 
 /**
  * Decorator component that automatically adjusts the width and height of a single child

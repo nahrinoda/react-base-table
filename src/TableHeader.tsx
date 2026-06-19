@@ -1,36 +1,7 @@
 import React, { useRef, useCallback, useImperativeHandle, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-import type { ColumnShape, RowData } from './types';
-
-export interface TableHeaderProps {
-  className?: string;
-  width: number;
-  height: number;
-  headerHeight: number | number[];
-  rowWidth: number;
-  rowHeight: number;
-  columns: ColumnShape[];
-  data: RowData[];
-  frozenData?: RowData[];
-  headerRenderer: (args: {
-    style: React.CSSProperties;
-    columns: ColumnShape[];
-    headerIndex: number;
-  }) => React.ReactNode;
-  rowRenderer: (args: {
-    style: React.CSSProperties;
-    columns: ColumnShape[];
-    rowData: RowData;
-    rowIndex: number;
-  }) => React.ReactNode;
-  hoveredRowKey?: string | number | null;
-}
-
-export interface TableHeaderHandle {
-  scrollTo: (offset: number) => void;
-  forceUpdate: () => void;
-}
+import type { TableHeaderProps, TableHeaderHandle, RowData } from './types';
 
 const InnerTableHeader = React.forwardRef<TableHeaderHandle, TableHeaderProps>(
   (

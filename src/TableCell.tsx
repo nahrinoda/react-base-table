@@ -2,16 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { toString } from './utils';
 
-import type { ColumnShape, RowData } from './types';
-
-export interface TableCellProps {
-  className?: string;
-  cellData?: any;
-  column?: ColumnShape;
-  columnIndex?: number;
-  rowData?: RowData;
-  rowIndex?: number;
-}
+import type { TableCellProps } from './types';
 
 /**
  * Cell component for BaseTable

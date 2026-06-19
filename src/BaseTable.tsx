@@ -4,7 +4,7 @@ import cn from 'classnames';
 import memoize from 'memoize-one';
 
 import GridTable from './GridTable';
-import type { GridTableHandle } from './GridTable';
+import type { GridTableHandle } from './types';
 import TableHeaderRow from './TableHeaderRow';
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
@@ -33,6 +33,8 @@ import {
 } from './utils';
 
 import type {
+  BaseTableProps,
+  BaseTableHandle,
   ColumnShape,
   RowData,
   RowKey,
@@ -67,105 +69,6 @@ const DEFAULT_COMPONENTS: Record<string, React.ComponentType<any>> = {
 const RESIZE_THROTTLE_WAIT = 50;
 
 const EMPTY_ARRAY: any[] = [];
-
-export interface BaseTableProps {
-  classPrefix?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-  columns?: ColumnShape[];
-  data: RowData[];
-  frozenData?: RowData[];
-  rowKey: string | number;
-  width: number;
-  height?: number;
-  maxHeight?: number;
-  rowHeight?: number;
-  estimatedRowHeight?: number | ((args: { rowData: RowData; rowIndex: number }) => number);
-  headerHeight: number | number[];
-  footerHeight?: number;
-  fixed?: boolean;
-  disabled?: boolean;
-  overlayRenderer?: React.ComponentType<any> | React.ReactElement;
-  emptyRenderer?: React.ComponentType<any> | React.ReactElement;
-  footerRenderer?: React.ComponentType<any> | React.ReactElement;
-  headerRenderer?: React.ComponentType<any> | React.ReactElement;
-  rowRenderer?: React.ComponentType<any> | React.ReactElement;
-  headerClassName?: string | ((args: { columns: ColumnShape[]; headerIndex: number }) => string);
-  rowClassName?: string | ((args: { columns: ColumnShape[]; rowData: RowData; rowIndex: number }) => string);
-  headerProps?: Record<string, any> | ((args: { columns: ColumnShape[]; headerIndex: number }) => Record<string, any>);
-  headerCellProps?:
-    | Record<string, any>
-    | ((args: {
-        columns: ColumnShape[];
-        column: ColumnShape;
-        columnIndex: number;
-        headerIndex: number;
-      }) => Record<string, any>);
-  rowProps?:
-    | Record<string, any>
-    | ((args: { columns: ColumnShape[]; rowData: RowData; rowIndex: number }) => Record<string, any>);
-  cellProps?:
-    | Record<string, any>
-    | ((args: {
-        columns: ColumnShape[];
-        column: ColumnShape;
-        columnIndex: number;
-        rowData: RowData;
-        rowIndex: number;
-      }) => Record<string, any>);
-  expandIconProps?:
-    | Record<string, any>
-    | ((args: {
-        rowData: RowData;
-        rowIndex: number;
-        depth: number;
-        expandable: boolean;
-        expanded: boolean;
-      }) => Record<string, any>);
-  expandColumnKey?: string;
-  defaultExpandedRowKeys?: RowKey[];
-  expandedRowKeys?: RowKey[];
-  onRowExpand?: (args: { expanded: boolean; rowData: RowData; rowIndex: number; rowKey: RowKey }) => void;
-  onExpandedRowsChange?: (expandedRowKeys: RowKey[]) => void;
-  sortBy?: SortByShape;
-  sortState?: SortState;
-  onColumnSort?: (args: { column: ColumnShape; key: string; order: string }) => void;
-  onColumnResize?: (args: { column: ColumnShape; width: number }) => void;
-  onColumnResizeEnd?: (args: { column: ColumnShape; width: number }) => void;
-  useIsScrolling?: boolean;
-  overscanRowCount?: number;
-  getScrollbarSize?: () => number;
-  onScroll?: (args: ScrollArgs) => void;
-  onEndReached?: (args: { distanceFromEnd: number }) => void;
-  onEndReachedThreshold?: number;
-  onRowsRendered?: (args: RowsRenderedArgs) => void;
-  onScrollbarPresenceChange?: (args: { size: number; horizontal: boolean; vertical: boolean }) => void;
-  rowEventHandlers?: RowEventHandlers;
-  ignoreFunctionInColumnCompare?: boolean;
-  components?: TableComponents;
-}
-
-export interface BaseTableHandle {
-  getDOMNode: () => HTMLDivElement | null;
-  getColumnManager: () => ColumnManager;
-  getExpandedRowKeys: () => RowKey[];
-  getExpandedState: () => {
-    expandedData: RowData[];
-    expandedRowKeys: RowKey[];
-    expandedDepthMap: Record<string, number>;
-  };
-  getTotalRowsHeight: () => number;
-  getTotalColumnsWidth: () => number;
-  forceUpdateTable: () => void;
-  resetAfterRowIndex: (rowIndex?: number, shouldForceUpdate?: boolean) => void;
-  resetRowHeightCache: () => void;
-  scrollToPosition: (offset: { scrollLeft: number; scrollTop: number }) => void;
-  scrollToTop: (scrollTop: number) => void;
-  scrollToLeft: (scrollLeft: number) => void;
-  scrollToRow: (rowIndex?: number, align?: string) => void;
-  setExpandedRowKeys: (expandedRowKeys: RowKey[]) => void;
-}
 
 const DEFAULT_PROPS = {
   classPrefix: 'BaseTable',

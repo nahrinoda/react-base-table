@@ -5,48 +5,9 @@ import { FixedSizeGrid, VariableSizeGrid } from 'react-window';
 import memoize from 'memoize-one';
 
 import Header from './TableHeader';
-import type { TableHeaderHandle } from './TableHeader';
 import { getEstimatedTotalRowsHeight } from './utils';
 
-import type { ColumnShape, RowData, RowKey } from './types';
-
-export interface GridTableProps {
-  containerStyle?: React.CSSProperties;
-  classPrefix?: string;
-  className?: string;
-  width: number;
-  height: number;
-  headerHeight: number | number[];
-  headerWidth: number;
-  bodyWidth: number;
-  rowHeight: number;
-  estimatedRowHeight?: number | ((args: { rowData: RowData; rowIndex: number }) => number);
-  getRowHeight?: (rowIndex: number) => number;
-  columns: ColumnShape[];
-  data: RowData[];
-  frozenData?: RowData[];
-  rowKey: string | number;
-  useIsScrolling?: boolean;
-  overscanRowCount?: number;
-  hoveredRowKey?: RowKey | null;
-  style?: React.CSSProperties;
-  onScrollbarPresenceChange?: (...args: any[]) => void;
-  onScroll?: (...args: any[]) => void;
-  onRowsRendered?: (args: any) => void;
-  headerRenderer: (args: any) => React.ReactNode;
-  rowRenderer: (args: any) => React.ReactNode;
-  [key: string]: any;
-}
-
-export interface GridTableHandle {
-  resetAfterRowIndex: (rowIndex?: number, shouldForceUpdate?: boolean) => void;
-  forceUpdateTable: () => void;
-  scrollToPosition: (args: { scrollLeft?: number; scrollTop?: number }) => void;
-  scrollToTop: (scrollTop: number) => void;
-  scrollToLeft: (scrollLeft: number) => void;
-  scrollToRow: (rowIndex?: number, align?: string) => void;
-  getTotalRowsHeight: () => number;
-}
+import type { GridTableProps, GridTableHandle, TableHeaderHandle } from './types';
 
 /**
  * A wrapper of the Grid for internal only
