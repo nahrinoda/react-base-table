@@ -4,6 +4,7 @@ import cn from 'classnames';
 import memoize from 'memoize-one';
 
 import GridTable from './GridTable';
+import type { GridTableHandle } from './GridTable';
 import TableHeaderRow from './TableHeaderRow';
 import TableRow from './TableRow';
 import TableHeaderCell from './TableHeaderCell';
@@ -444,9 +445,9 @@ class BaseTable extends React.PureComponent<BaseTableProps, BaseTableState> {
 
   columnManager: ColumnManager;
   tableNode: HTMLDivElement | null = null;
-  table: GridTable | null = null;
-  leftTable: GridTable | null = null;
-  rightTable: GridTable | null = null;
+  table: GridTableHandle | null = null;
+  leftTable: GridTableHandle | null = null;
+  rightTable: GridTableHandle | null = null;
 
   _isResetting: boolean;
   _resetIndex: number | null;
@@ -1191,15 +1192,15 @@ class BaseTable extends React.PureComponent<BaseTableProps, BaseTableState> {
     this.tableNode = ref;
   }
 
-  _setMainTableRef(ref: GridTable | null) {
+  _setMainTableRef(ref: GridTableHandle | null) {
     this.table = ref;
   }
 
-  _setLeftTableRef(ref: GridTable | null) {
+  _setLeftTableRef(ref: GridTableHandle | null) {
     this.leftTable = ref;
   }
 
-  _setRightTableRef(ref: GridTable | null) {
+  _setRightTableRef(ref: GridTableHandle | null) {
     this.rightTable = ref;
   }
 
