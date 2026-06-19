@@ -5,6 +5,7 @@ import { FixedSizeGrid, VariableSizeGrid } from 'react-window';
 import memoize from 'memoize-one';
 
 import Header from './TableHeader';
+import type { TableHeaderHandle } from './TableHeader';
 import { getEstimatedTotalRowsHeight } from './utils';
 
 import type { ColumnShape, RowData, RowKey } from './types';
@@ -41,7 +42,7 @@ export interface GridTableProps {
  * A wrapper of the Grid for internal only
  */
 class GridTable extends React.PureComponent<GridTableProps> {
-  headerRef: InstanceType<typeof Header> | null = null;
+  headerRef: TableHeaderHandle | null = null;
   bodyRef: InstanceType<typeof FixedSizeGrid> | InstanceType<typeof VariableSizeGrid> | null = null;
   innerRef: HTMLElement | null = null;
 
@@ -215,7 +216,7 @@ class GridTable extends React.PureComponent<GridTableProps> {
     );
   }
 
-  _setHeaderRef(ref: InstanceType<typeof Header> | null) {
+  _setHeaderRef(ref: TableHeaderHandle | null) {
     this.headerRef = ref;
   }
 
