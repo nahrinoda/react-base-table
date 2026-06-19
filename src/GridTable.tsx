@@ -1,5 +1,4 @@
 import React, { useRef, useCallback, useMemo, useImperativeHandle } from 'react';
-import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { FixedSizeGrid, VariableSizeGrid } from 'react-window';
 import memoize from 'memoize-one';
@@ -182,33 +181,6 @@ const InnerGridTable = React.forwardRef<GridTableHandle, GridTableProps>(
     );
   },
 );
-
-InnerGridTable.propTypes = {
-  containerStyle: PropTypes.object,
-  classPrefix: PropTypes.string,
-  className: PropTypes.string,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  headerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]).isRequired,
-  headerWidth: PropTypes.number.isRequired,
-  bodyWidth: PropTypes.number.isRequired,
-  rowHeight: PropTypes.number.isRequired,
-  estimatedRowHeight: PropTypes.oneOfType([PropTypes.func, PropTypes.number]),
-  getRowHeight: PropTypes.func,
-  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
-  data: PropTypes.array.isRequired,
-  frozenData: PropTypes.array,
-  rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  useIsScrolling: PropTypes.bool,
-  overscanRowCount: PropTypes.number,
-  hoveredRowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  style: PropTypes.object,
-  onScrollbarPresenceChange: PropTypes.func,
-  onScroll: PropTypes.func,
-  onRowsRendered: PropTypes.func,
-  headerRenderer: PropTypes.func.isRequired,
-  rowRenderer: PropTypes.func.isRequired,
-};
 
 const GridTable = React.memo(InnerGridTable);
 

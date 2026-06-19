@@ -1,6 +1,4 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
-import PropTypes from 'prop-types';
-
 import { renderElement } from './utils';
 
 import type { TableRowProps } from './types';
@@ -164,27 +162,5 @@ const TableRow: React.FC<TableRowProps> = React.memo(
     );
   },
 );
-
-TableRow.propTypes = {
-  isScrolling: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
-  rowData: PropTypes.object.isRequired,
-  rowIndex: PropTypes.number.isRequired,
-  rowKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  expandColumnKey: PropTypes.string,
-  depth: PropTypes.number,
-  rowEventHandlers: PropTypes.object,
-  rowRenderer: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
-  cellRenderer: PropTypes.func,
-  expandIconRenderer: PropTypes.func,
-  estimatedRowHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.func]),
-  getIsResetting: PropTypes.func,
-  onRowHover: PropTypes.func,
-  onRowExpand: PropTypes.func,
-  onRowHeightChange: PropTypes.func,
-  tagName: PropTypes.elementType,
-};
 
 export default TableRow;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
 import type { AutoResizerProps } from './types';
@@ -34,31 +33,6 @@ const AutoResizer: React.FC<AutoResizerProps> = ({ className, width, height, chi
       }
     </AutoSizer>
   );
-};
-
-AutoResizer.propTypes = {
-  /**
-   * Class name for the component
-   */
-  className: PropTypes.string,
-  /**
-   * the width of the component, will be the container's width if not set
-   */
-  width: PropTypes.number,
-  /**
-   * the height of the component, will be the container's width if not set
-   */
-  height: PropTypes.number,
-  /**
-   * A callback function to render the children component
-   * The handler is of the shape of `({ width, height }) => node`
-   */
-  children: PropTypes.func.isRequired,
-  /**
-   * A callback function when the size of the table container changed if the width and height are not set
-   * The handler is of the shape of `({ width, height }) => *`
-   */
-  onResize: PropTypes.func,
 };
 
 export default AutoResizer;

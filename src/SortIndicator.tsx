@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import SortOrder from './SortOrder';
@@ -28,12 +27,6 @@ const SortIndicator: React.FC<SortIndicatorProps> = ({ sortOrder, className, sty
       {sortOrder === SortOrder.DESC ? '\u2193' : '\u2191'}
     </div>
   );
-};
-
-SortIndicator.propTypes = {
-  sortOrder: PropTypes.oneOf([SortOrder.ASC, SortOrder.DESC]),
-  className: PropTypes.string,
-  style: PropTypes.object,
 };
 
 export default SortIndicator;

@@ -257,25 +257,21 @@ export interface BaseTableHandle {
 }
 
 /** ColumnResizer props */
-export interface ColumnResizerProps {
-  style?: React.CSSProperties;
+export interface ColumnResizerProps extends React.HTMLAttributes<HTMLDivElement> {
   column?: ColumnShape;
   onResizeStart?: (column: ColumnShape) => void;
   onResize?: (column: ColumnShape, width: number) => void;
   onResizeStop?: (column: ColumnShape) => void;
   minWidth?: number;
-  className?: string;
-  [key: string]: any;
 }
 
 /** ExpandIcon props */
-export interface ExpandIconProps {
+export interface ExpandIconProps extends React.HTMLAttributes<HTMLDivElement> {
   expandable?: boolean;
   expanded?: boolean;
   indentSize?: number;
   depth?: number;
   onExpand?: (expanded: boolean) => void;
-  [key: string]: any;
 }
 
 /** GridTable props */
@@ -304,6 +300,7 @@ export interface GridTableProps {
   onRowsRendered?: (args: any) => void;
   headerRenderer: (args: any) => React.ReactNode;
   rowRenderer: (args: any) => React.ReactNode;
+  /** Allow pass-through props forwarded to the underlying Grid component */
   [key: string]: any;
 }
 
@@ -319,11 +316,8 @@ export interface GridTableHandle {
 }
 
 /** SortIndicator props */
-export interface SortIndicatorProps {
+export interface SortIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
   sortOrder?: SortOrderValue;
-  className?: string;
-  style?: React.CSSProperties;
-  [key: string]: any;
 }
 
 /** TableCell props */
@@ -386,6 +380,7 @@ export interface TableHeaderRowProps {
   expandColumnKey?: string;
   expandIcon?: React.ComponentType<any>;
   tagName?: React.ElementType;
+  /** Allow pass-through props forwarded to the tag element */
   [key: string]: any;
 }
 
@@ -416,5 +411,6 @@ export interface TableRowProps {
   onRowExpand?: (args: { expanded: boolean; rowData: RowData; rowIndex: number; rowKey: RowKey }) => void;
   onRowHeightChange?: (rowKey: RowKey, height: number, rowIndex: number, frozen?: any) => void;
   tagName?: React.ElementType;
+  /** Allow pass-through props forwarded to the tag element */
   [key: string]: any;
 }

@@ -1,5 +1,4 @@
 import React, { useRef, useCallback, useImperativeHandle, useReducer } from 'react';
-import PropTypes from 'prop-types';
 
 import type { TableHeaderProps, TableHeaderHandle, RowData } from './types';
 
@@ -77,20 +76,6 @@ const InnerTableHeader = React.forwardRef<TableHeaderHandle, TableHeaderProps>(
     );
   },
 );
-
-InnerTableHeader.propTypes = {
-  className: PropTypes.string,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  headerHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]).isRequired,
-  rowWidth: PropTypes.number.isRequired,
-  rowHeight: PropTypes.number.isRequired,
-  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
-  data: PropTypes.array.isRequired,
-  frozenData: PropTypes.array,
-  headerRenderer: PropTypes.func.isRequired,
-  rowRenderer: PropTypes.func.isRequired,
-};
 
 const TableHeader = React.memo(InnerTableHeader);
 

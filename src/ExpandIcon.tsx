@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import type { ExpandIconProps } from './types';
@@ -48,13 +47,5 @@ const ExpandIcon: React.FC<ExpandIconProps> = React.memo(
     );
   },
 );
-
-ExpandIcon.propTypes = {
-  expandable: PropTypes.bool,
-  expanded: PropTypes.bool,
-  indentSize: PropTypes.number,
-  depth: PropTypes.number,
-  onExpand: PropTypes.func,
-};
 
 export default ExpandIcon;
