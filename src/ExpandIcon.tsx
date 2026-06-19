@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -14,28 +14,17 @@ export interface ExpandIconProps {
 /**
  * default ExpandIcon for BaseTable
  */
-class ExpandIcon extends React.PureComponent<ExpandIconProps> {
-  static defaultProps = {
-    depth: 0,
-    indentSize: 16,
-  };
+const ExpandIcon: React.FC<ExpandIconProps> = React.memo(
+  ({ expandable, expanded, indentSize = 16, depth = 0, onExpand, ...rest }) => {
+    const handleClick = useCallback(
+      (e: React.MouseEvent) => {
+        e.stopPropagation();
+        e.preventDefault();
+        onExpand!(!expanded);
+      },
+      [onExpand, expanded],
+    );
 
-  static propTypes = {
-    expandable: PropTypes.bool,
-    expanded: PropTypes.bool,
-    indentSize: PropTypes.number,
-    depth: PropTypes.number,
-    onExpand: PropTypes.func,
-  };
-
-  constructor(props: ExpandIconProps) {
-    super(props);
-
-    this._handleClick = this._handleClick.bind(this);
-  }
-
-  render() {
-    const { expandable, expanded, indentSize, depth, onExpand, ...rest } = this.props;
     if (!expandable && indentSize === 0) return null;
 
     const cls = cn('BaseTable__expand-icon', {
@@ -45,7 +34,7 @@ class ExpandIcon extends React.PureComponent<ExpandIconProps> {
       <div
         {...rest}
         className={cls}
-        onClick={expandable && onExpand ? this._handleClick : undefined}
+        onClick={expandable && onExpand ? handleClick : undefined}
         style={{
           fontFamily: 'initial',
           cursor: 'pointer',
@@ -58,20 +47,21 @@ class ExpandIcon extends React.PureComponent<ExpandIconProps> {
           textAlign: 'center',
           transition: 'transform 0.15s ease-out',
           transform: `rotate(${expandable && expanded ? 90 : 0}deg)`,
-          marginLeft: (depth || 0) * (indentSize || 16),
+          marginLeft: depth * indentSize,
         }}
       >
         {expandable && '\u25B8'}
       </div>
     );
-  }
+  },
+);
 
-  _handleClick(e: React.MouseEvent) {
-    e.stopPropagation();
-    e.preventDefault();
-    const { onExpand, expanded } = this.props;
-    onExpand!(!expanded);
-  }
-}
+ExpandIcon.propTypes = {
+  expandable: PropTypes.bool,
+  expanded: PropTypes.bool,
+  indentSize: PropTypes.number,
+  depth: PropTypes.number,
+  onExpand: PropTypes.func,
+};
 
 export default ExpandIcon;
